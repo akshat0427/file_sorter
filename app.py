@@ -4,15 +4,17 @@ import shutil
 
 
 
-l = []
-d = {}
+files = []  # stores all the unique file types
+dirs = {} # list of files to their corresponding file type
+
 c =0
 
 for i in os.listdir():
     
-    l.append(i.split('.')[1])   
-    
-for i in set(l):
+    files.append(i.split('.')[1])   
+
+
+for i in set(files): ''' creates a new folder for every unique file type (ie- .jpg , .txt)   '''
     # os.mkdir(f'./{i}')
     
     l2 = []
@@ -27,7 +29,7 @@ for i in set(l):
         
         else:
             pass
-        d[i] = l2
+        dirs[i] = l2
     os.makedirs(f"./{i}")
     
 
@@ -35,9 +37,9 @@ for i in set(l):
 
     
 
-for j in d.keys():
+for j in dirs.keys():    ''' moves the files of simillar type to their folder  '''
     # print(j)
-    for i in d[j]:
+    for i in dirs[j]:
         print(i)
         
         original = f'./{i}'
